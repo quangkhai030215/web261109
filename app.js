@@ -1,7 +1,5 @@
 // app.js : 영화 배열을 다루는 함수 6개 / 짠광카이 2651068 / 10주차 
 // average : 영화 배열 ⇒ 평균 평점(숫자) 
-
-
 const average = (list) => {
     let sum = 0;
     for (const m of list) {
@@ -11,6 +9,7 @@ const average = (list) => {
 }
 
 console.log("평균:", average(movies));
+
 
 //영화 배열 ⇒ 평점이 가장 높은 영화 객체
 const best = (list) => {
@@ -48,12 +47,17 @@ console.log(yearsSince(movies[0].date) + "년 전 개봉");
 
 
 //포스터 경로, 크기 ⇒ TMDB 이미지 주소(문자열)
-const posterUrl = (path, size) => {
-    return "https://image.tmdb.org/t/p/" + size + path;
+const posterUrl = (url, size) => {
+    return url.replace("/w342/", "/" + size + "/");
 }
-console.log(posterUrl(movies[0].poster, "w342"));
+console.log(posterUrl(movies[0].poster, "w500"));
 
 
-document.title = "내 영화" + movies.length + "편";
+document.title = "내 영화 " + movies.length + "편";
+
 console.table(sortByRating(movies));
-document.getElementById("out").textContent = "평균 " + average(movies).toFixed(1) + "점, 최고 " + best(movies).title;
+
+document.getElementById("out").textContent =
+    "평균 " + average(movies).toFixed(1) +
+    "점, 최고는 " + best(movies).title;
+
