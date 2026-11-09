@@ -1,18 +1,64 @@
 
-// 
-const title = ["Other Mommy", "The Last Voyage of the Demeter", "The Marvels", "The Hunger Games: The Ballad of Songbirds & Snakes", "The Color Purple", "The Flash", "The Little Mermaid", "The Nun II", "The Marvels", "The Hunger Games: The Ballad of Songbirds & Snakes"];);
-const rating = ["7.1", "6.2", "6.3", "6.5", "6.9", "6.8", "7.4", "6.0", "6.3", "6.5"];
-const year = ["2026-10-08", "2023-08-11", "2023-11-10", "2023-11-17", "2023-12-20", "2023-06-16", "2023-05-26", "2023-09-08", "2023-11-10", "2023-11-17"];
+// script.js : 내 영화 평점 통계(콘솔판)
+// 작성자 : 짠광카이 (2651068) / 10주차
 
-// 즉시 실행 함수 만들기
-function init() {
-    console.log
-const gugudan = (dan) => {
-    for (let i = 1; i <= 9; i++) {
-        console.log(`${dan} * ${i} = ${dan * i}`);
-    }   
+const titles = ["F1", "Street Fighter", "Practical Magic 2", "Other Mommy", "Resident Evil"];
 
-gugudan(7);
+const ratings = [7.8, 6.3, 6.9, 5.9, 7.3];
+
+const years = [2025, 2026, 2026, 2026, 2026];
+
+let sum = 0;
+
+for (let i = 0; i < ratings.length; i++) {
+    sum = sum + ratings[i];
 }
-const add= (num1, num2) => {num1 + num2};
-console.log(add(1234, 5678));
+
+console.log("합계:", sum);
+
+const average = sum / ratings.length;
+
+console.log("평균:", average);
+
+let max = ratings[0];
+let maxIndex = 0;
+let count = 0;
+
+for (let i = 0; i < ratings.length; i++) {
+
+    if (ratings[i] > max) {
+        max = ratings[i];
+        maxIndex = i;
+    }
+
+    if (ratings[i] >= 8) {
+        count++;
+    }
+}
+
+console.log("최고:", titles[maxIndex], max);
+
+console.log("8점 이상:", count + "편");
+
+for (let i = 0; i < ratings.length; i++) {
+
+    let label;
+
+    if (8.5 < ratings[i]) {
+        label = "명작";
+    }
+    else if (7 < ratings[i]) {
+        label = "추천";
+    }
+    else {
+        label = "보통";
+    }
+
+    console.log(titles[i] + " (" + years[i] + ") : " + ratings[i] + " " + label);
+}
+
+const avgText = average.toFixed(1);
+
+const best = titles[maxIndex];
+
+alert(`내 영화 ${titles.length}편, 평균 ${avgText}점, 최고는 ${best}`);
